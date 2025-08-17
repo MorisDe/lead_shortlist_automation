@@ -1,1 +1,251 @@
-.gitkeep
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #6b7280, #1f2937);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 48rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 2rem;
+        }
+        .thank-you-message {
+            display: none;
+            text-align: center;
+            color: #10b981;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 2rem;
+        }
+        @media (max-width: 640px) {
+            .form-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Applicant Form</h1>
+        <form id="applicantForm" class="space-y-6">
+            <!-- Applicant Number -->
+            <div id="applicantNumber" class="text-lg font-semibold text-gray-600 mb-4 text-center">
+                  
+            </div>
+
+            <!-- Personal Details -->
+            <div>
+                <h2 class="text-lg font-semibold text-gray-700 mb-4">Personal Details</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="full_name" class="block text-sm font-medium text-gray-700">Full Name *</label>
+                        <input type="text" id="full_name" name="full_name" required
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email *</label>
+                        <input type="email" id="email" name="email" required
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="location" class="block text-sm font-medium text-gray-700">Location *</label>
+                        <input type="text" id="location" name="location" required
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="linkedin" class="block text-sm font-medium text-gray-700">LinkedIn</label>
+                        <input type="url" id="linkedin" name="linkedin"
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work Experience -->
+            <div>
+                <h2 class="text-lg font-semibold text-gray-700 mb-4">Work Experience</h2>
+                <div id="workExperienceContainer" class="space-y-4">
+                    <div class="work-experience-entry border p-4 rounded-md">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Company *</label>
+                                <input type="text" name="company_0" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Title *</label>
+                                <input type="text" name="title_0" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Start Date *</label>
+                                <input type="date" name="start_0" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">End Date</label>
+                                <input type="date" name="end_0"
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Technologies *</label>
+                                <input type="text" name="technologies_0" required
+                                       class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="addWorkExperience" class="mt-4 flex items-center text-indigo-600 hover:text-indigo-800">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    Add Work Experience
+                </button>
+            </div>
+
+            <!-- Salary Preferences -->
+            <div>
+                <h2 class="text-lg font-semibold text-gray-700 mb-4">Salary Preferences</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="preferred_rate" class="block text-sm font-medium text-gray-700">Preferred Rate ($/hr) *</label>
+                        <input type="number" id="preferred_rate" name="preferred_rate" step="0.01" required
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="minimum_rate" class="block text-sm font-medium text-gray-700">Minimum Rate ($/hr) *</label>
+                        <input type="number" id="minimum_rate" name="minimum_rate" step="0.01" required
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="currency" class="block text-sm font-medium text-gray-700">Currency *</label>
+                        <select id="currency" name="currency" required
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                            <option value="" disabled selected>Select Currency</option>
+                            <option value="USD, $" class="bg-blue-100">USD, $</option>
+                            <option value="CAD, $" class="bg-blue-200">CAD, $</option>
+                            <option value="GBP, £" class="bg-green-100">GBP, £</option>
+                            <option value="EUR, €" class="bg-yellow-100">EUR, €</option>
+                            <option value="INR, ₹" class="bg-pink-100">INR, ₹</option>
+                            <option value="Others" class="bg-gray-100">Others</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="availability" class="block text-sm font-medium text-gray-700">Availability (hrs/wk) *</label>
+                        <input type="number" id="availability" name="availability" required
+                               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700">
+                Submit Application
+            </button>
+        </form>
+        <div id="thankYouMessage" class="thank-you-message">
+            Thank you for your information!
+        </div>
+    </div>
+
+    <script>
+    // Add new work experience entry
+        let workExperienceIndex = 1;
+        document.getElementById('addWorkExperience').addEventListener('click', () => {
+            const container = document.getElementById('workExperienceContainer');
+            const newEntry = document.createElement('div');
+            newEntry.className = 'work-experience-entry border p-4 rounded-md mt-4';
+            newEntry.innerHTML = `
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Company *</label>
+                        <input type="text" name="company_${workExperienceIndex}" required
+                              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Title *</label>
+                        <input type="text" name="title_${workExperienceIndex}" required
+                              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Start Date *</label>
+                        <input type="date" name="start_${workExperienceIndex}" required
+                              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">End Date</label>
+                        <input type="date" name="end_${workExperienceIndex}"
+                              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Technologies *</label>
+                        <input type="text" name="technologies_${workExperienceIndex}" required
+                              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                </div>
+            `;
+            container.appendChild(newEntry);
+            workExperienceIndex++;
+        });
+
+        // Form submission with validation
+        document.getElementById('applicantForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+
+            // --- Validation 1: Work experience dates ---
+            for (let i = 0; i < workExperienceIndex; i++) {
+                const start = formData.get(`start_${i}`);
+                const end = formData.get(`end_${i}`);
+                if (start && end && new Date(start) > new Date(end)) {
+                    alert(`Work experience #${i + 1}: Start date cannot be after End date.`);
+                    return;
+                }
+            }
+
+            // --- Validation 2: Availability hours ---
+            const availability = parseInt(formData.get('availability'), 10);
+            if (availability > 160) {
+                alert('Availability cannot exceed 160 hours per week.');
+                return;
+            }
+            if (availability < 1) {
+                alert('Availability cannot be less than an hour per week.');
+                return;
+            }
+
+            // Submit form if validations pass
+            try {
+                const response = await fetch('http://localhost:5000/formdata', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    document.getElementById('applicantNumber').textContent = `Applicant ID: ${result.new_id}`;
+                    form.style.display = 'none';
+                    document.getElementById('thankYouMessage').style.display = 'block';
+                } else {
+                    alert('Error submitting form: ' + result.message);
+                }
+            } catch (error) {
+                alert('Error submitting form: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
